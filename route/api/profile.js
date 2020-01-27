@@ -363,7 +363,7 @@ request(options, (error, response, body)=>{
 
         //check if the request reponsecode is not 200 Ok
     if(response.statusCode !== 200) {
-        res.status(404).json({msg: 'No Github Profile Found'})
+        res.status(404).json({msg: 'No Github Profile Found with user'})
     }
         //send the body to the res, Then convert the String to Json
         res.json(JSON.parse(body));
