@@ -3,6 +3,12 @@
 /client/node_modules
 /.pnp
 .pnp.jsc
+yarn.lock
+build
+.DS_Store
+yarn-error.log
+package-lock.json
+
 
 # configuration files
 /config

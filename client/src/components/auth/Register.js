@@ -2,13 +2,14 @@
  import {connect} from 'react-redux'
  import { Link } from 'react-router-dom';
  import { setAlert} from '../../actions/alert'
+ import { register } from '../../actions/auth'
  import PropTypes from 'prop-types';
  
 
 
 
 
- const Register = ({setAlert}) => {
+ const Register = ({setAlert, register}) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -28,7 +29,7 @@
         if(password !== password2){
             setAlert('Password does not match', 'danger')
         }else{
-            console.log("success")
+            register({name , email, password})
         }
     }
     
@@ -43,7 +44,7 @@
           name="name" 
           value={name}
           onChange={e => onChange(e)}
-          required />
+           />
         </div>
         <div className="form-group">
           <input type="email" 
@@ -51,7 +52,7 @@
           name="email" 
           value={email}
           onChange={e => onChange(e)}
-          required />
+           />
           <small className="form-text">This site uses Gravatar so if you want a profile image, use a Gravatar email</small
           >
         </div>
@@ -62,7 +63,6 @@
             name="password"
             value={password}
             onChange={e => onChange(e)}
-            minLength="6"
           />
         </div>
         <div className="form-group">
@@ -72,8 +72,7 @@
             name="password2"
             value={password2}
             onChange={e => onChange(e)}
-            required 
-            minLength="6"
+            
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
@@ -85,7 +84,8 @@
      );
  };
  Register.protoTypes={
-     setAlert: PropTypes.func.isRequired
+     setAlert: PropTypes.func.isRequired,
+     register: PropTypes.func.isRequired
  }
  
- export default connect(null, {setAlert})(Register);
+ export default connect(null, {setAlert, register})(Register);
