@@ -1,6 +1,6 @@
  import React, { Fragment, useState } from 'react';
  import {connect} from 'react-redux'
- import { Link } from 'react-router-dom';
+ import { Link, Redirect } from 'react-router-dom';
  import { setAlert} from '../../actions/alert'
  import { register } from '../../actions/auth'
  import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@
 
 
 
- const Register = ({setAlert, register}) => {
+ const Register = ({setAlert, register, isAuthenticated}) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -32,6 +32,11 @@
             register({name , email, password})
         }
     }
+
+    //redirect if Register success in
+   if(isAuthenticated){
+    return <Redirect to='/dashboard' />
+  }
     
     return (
          <Fragment>
@@ -55,6 +60,7 @@
            />
           <small className="form-text">This site uses Gravatar so if you want a profile image, use a Gravatar email</small
           >
+          
         </div>
         <div className="form-group">
           <input
@@ -83,9 +89,13 @@
          </Fragment>
      );
  };
- Register.protoTypes={
+ Register.propTypes={
      setAlert: PropTypes.func.isRequired,
-     register: PropTypes.func.isRequired
+     register: PropTypes.func.isRequired,
+     isAuthenticated: PropTypes.bool
  }
+ const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+}) 
  
- export default connect(null, {setAlert, register})(Register);
+ export default connect(mapStateToProps, {setAlert, register})(Register);
