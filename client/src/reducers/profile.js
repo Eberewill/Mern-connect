@@ -2,7 +2,9 @@ import {
      GET_PROFILE, 
      PROFILE_ERRORS,
      CLEAR_PROFILE,
-     UPDATE_PROFILE
+     UPDATE_PROFILE,
+     GET_PROFILES,
+     GET_REPOS
     } from "../actions/types";
 
 const initialState = {
@@ -13,33 +15,45 @@ const initialState = {
     errors:{}
 }
 
-export default function ( sate = initialState, action){
+export default function ( state = initialState, action){
     const {type, payload} = action;
 
     switch(type){
         case GET_PROFILE:
         case UPDATE_PROFILE:        
         return{
-            ...sate,
+            ...state,
             profile: payload,
             loading: false
         }
-        
+        case GET_PROFILES:
+            return{
+                ...state,
+                profiles: payload,
+                loading: false
+            }
         case PROFILE_ERRORS:
         return{
-            ...sate,
+            ...state,
             error: payload,
             loading: false
         };
         case CLEAR_PROFILE:
             return {
-                ...sate,
-                profile:null,
+                ...state,
+                profile: null,
                 repos: [],
                 loading: false
             }
+        case GET_REPOS:
+            return{
+                ...state,
+                repos: payload,
+                loading: false
+            }
         default:
-            return sate;
+        
+            return state;
     }
 
 }

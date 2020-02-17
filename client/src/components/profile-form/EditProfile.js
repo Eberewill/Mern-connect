@@ -51,7 +51,7 @@ useEffect(() => {
     
   });
 
-},[loading]);
+},[loading, getCurrentProfile]);
 const {
   company,
   website,

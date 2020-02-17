@@ -6,6 +6,7 @@ const auth = require('../../middleweare/auth')
 const {check, validationResult} = require("express-validator");
 const Profile = require('../../models/Profile')
 const User = require('../../models/User')
+const Post = require('../../models/Post')
 // @route GET api/profile/me
 // @desc  Getcurrent users profile
 // @access private
@@ -127,11 +128,11 @@ router.get('/', async (req, res) => {
 })
 
 
-// @route GET api/profile/user/:user_id
+// @route GET api/profile/:user_id
 // @desc  Get User by ID
 // @access Public
 
-router.get('/user/:user_id', async (req, res) => {
+router.get('/:user_id', async (req, res) => {
     try {
         const profile = await Profile.findOne({ user : req.params.user_id}).populate('user',['name', 'avatar']);
        if(!profile) return res.status(400).json({msg: "Profile not found"})
@@ -155,6 +156,10 @@ router.get('/user/:user_id', async (req, res) => {
 router.delete('/', auth, async (req, res) => {
     //@todos - remove users posts
     try {
+
+        // remove user posts
+        await Post.deleteMany({ user: req.user})
+
         //remove profile
         await Profile.findOneAndRemove({ user : req.user.id});
         
@@ -248,9 +253,6 @@ const removeIndex = profile.experience.map(item =>
        profile.experience.splice(removeIndex, 1)
 
      await  profile.save();
-        
-
-        res.json("deleted ")
         res.json(profile)
     } catch (error) {
         console.error(error.message)
@@ -336,9 +338,6 @@ const removeIndex = profile.education.map(item =>
        profile.education.splice(removeIndex, 1)
 
      await  profile.save();
-        
-
-        res.json(" Education deleted ")
         res.json(profile)
     } catch (error) {
         console.error(error.message)

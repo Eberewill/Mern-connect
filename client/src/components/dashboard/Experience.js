@@ -11,7 +11,7 @@ import {deleteExperience} from '../../actions/profile'
             <td className='hide-sm'>{exp.title}</td>
             <td>
     <Moment format='YYYY/MM/DD'>{exp.from}</Moment> -{' '}
-       {exp.to === null? (
+       {exp.to === null? ( 
            'Now'
            ) : (
            <Moment format='YYYY/MM/DD'>{exp.to}</Moment>
@@ -41,7 +41,7 @@ import {deleteExperience} from '../../actions/profile'
              </table>
          </Fragment>
      );
- };
+ }; 
 
  Experience.propTypes = {
      experience: PropTypes.array.isRequired,
@@ -49,4 +49,4 @@ import {deleteExperience} from '../../actions/profile'
 
  }
  
- export default connect(null, { deleteExperience}) (Experience);
+ export default connect(null, { deleteExperience})(Experience);

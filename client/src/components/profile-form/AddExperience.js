@@ -1,5 +1,5 @@
  import React, { Component, Fragment, useState } from 'react';
- import {Link, withRouter} from 'react-router-dom'
+ import {withRouter} from 'react-router-dom'
  import propTypes from 'prop-types'
  import {connect} from 'react-redux'
  import {addExperience} from '../../actions/profile'
@@ -90,4 +90,4 @@
 
  }
  
- export default connect(null, {addExperience}) (AddExperience);
+ export default connect(null, {addExperience}) (withRouter( AddExperience));
