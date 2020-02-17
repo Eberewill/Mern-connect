@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { withRouter} from 'react-router-dom'
 import propTypes from 'prop-types'
 import {connect} from 'react-redux'
