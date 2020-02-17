@@ -32,6 +32,7 @@
  }
  
  ProfileAbout.propTypes = {
+     
  profile: PropTypes.object.isRequired
  };
  
