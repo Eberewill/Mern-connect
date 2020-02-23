@@ -1,5 +1,5 @@
 # dependencies
 /node_modules
 /client/node_modules
-config/default.json
-config/production.json
+/config/default.json
+/config/production.json
