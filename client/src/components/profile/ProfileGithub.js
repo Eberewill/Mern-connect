@@ -12,28 +12,27 @@ const ProfilegGithub = ({username, getGithubRepos, repos})=>{
      
          return(
          <div className="profile-github">
-             <h2 className="ext-primary my-1">Github Repos</h2>
-             {repos === null? <Spinner/>: (
+             <h2 className="text-primary my-1">Github Repos</h2>
+             {repos === null ?   (<Spinner/> ):(
                  repos.map(repo => (
                      <div key={repo._id} className='repo bg-white p-1 my-1'>
-                         <div>
-                             <h4>
-                                 <a href={repo.html_url} target='_blank' rel='noopener noreferrer'>
-                                     {repo.name}
-                             </a>
-                             </h4>
-                          <p> {repo.discription}</p>   
-                             </div>
-                             <div>
-                                 <ul>
-                                     <li className="badge bdge-primary">
-                                         Stars: {repos.stargazers_count}
-                                     </li>
-                                     <li className="badge bdge-primary">
-                                         Watchers: {repos.watchers_count}
-                                     </li>
-                                     <li className="badge bdge-primary">
-                                         Forks: {repos.forks_count}
+                    <div>
+                    <h4>
+                <a href={repo.html_url} target='_blank' rel='noopener noreferrer'>
+                {repo.name}
+                </a>
+                </h4>
+                <p> {repo.discription}</p>   
+                </div>
+                 <div>
+                <ul>
+                <li className="badge badge-primary">
+                Stars: {repo.stargazers_count}
+                </li>
+    <li className="badge badge-primary">
+    Watchers: {repo.watchers_count}</li>
+                 <li className="badge badge-primary">
+                                         Forks: {repo.forks_count}
                                      </li>
                                  </ul>
                              </div>

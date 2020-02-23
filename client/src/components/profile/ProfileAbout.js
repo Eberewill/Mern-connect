@@ -1,4 +1,4 @@
- import React, { Component, Fragment } from 'react';
+ import React, {Fragment } from 'react';
  import PropTypes from 'prop-types';
  
  const ProfileAbout = ({ profile: {
@@ -11,7 +11,7 @@
             <div className="profile-about bg-light p-2">
                 {bio &&(
                     <Fragment>
-        <h2 className="text-primary">{name.trim().split('')[0]}s Bio</h2>
+        <h2 className="text-primary">About/Bio</h2>
           <p>{bio}</p>
           <div className="line"></div>
 

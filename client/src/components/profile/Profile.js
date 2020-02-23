@@ -1,4 +1,4 @@
-   import React, { Component, useEffect, Fragment } from 'react';
+   import React, { useEffect, Fragment } from 'react';
    import PropTypes from 'prop-types';
    import {connect} from 'react-redux'
    import Spinner from '../layout/Spinner'
@@ -85,4 +85,6 @@ import { Link } from 'react-router-dom';
        auth: state.auth
    })
    
-   export default connect(mapStateToProps, {getProfileById})(Profile);
+   export default connect(mapStateToProps,
+     {getProfileById}
+     )(Profile);
