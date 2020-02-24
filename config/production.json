@@ -1,6 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://eberewill:eberewill@willexdomaincluster1-th3kd.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken",
-    "githubClientId": "3675d0a75a4d309cdf57",
-    "githubSecret": "08b8a3a23acd80460fee42d9e386c12d7ceaa8c3"
-}
